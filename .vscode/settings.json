@@ -1,0 +1,6 @@
+{
+    "python.linting.flake8Path": "~/.venvs/djr/bin/flake8",
+    "python.linting.mypyPath": "~/.venvs/djr/bin/mypy",
+    "python.pythonPath": "~/.venvs/djr/bin/python",
+    "python.venvPath": "~/.venvs"
+}
