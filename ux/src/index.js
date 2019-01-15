@@ -1,22 +1,20 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
-import store, { history } from './store';
-import App from './containers/app';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Route, Switch } from 'react-router-dom'
+import { ConnectedRouter } from 'connected-react-router'
+import { Provider } from 'react-redux'
+import store, { history } from './store'
 
-import 'sanitize.css/sanitize.css';
-import './index.css';
+import Home from './containers/home'
 
-const target = document.querySelector('#root');
 
-render(
+ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <div>
-        <App />
-      </div>
+      <Switch>
+        <Route path="/" component={Home} />
+      </Switch>
     </ConnectedRouter>
   </Provider>,
-  target
-);
+  document.getElementById('root')
+)

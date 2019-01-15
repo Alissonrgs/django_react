@@ -1,4 +1,5 @@
 -r common.txt
+django-webpack-loader==0.6.0
 flake8
 ipdb
 mypy

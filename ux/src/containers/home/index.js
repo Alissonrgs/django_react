@@ -1,64 +1,29 @@
-import React from 'react';
-import { push } from 'react-router-redux';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import {
-  increment,
-  incrementAsync,
-  decrement,
-  decrementAsync
-} from '../../modules/counter';
 
-const Home = props => (
-  <div>
-    <h1>Home</h1>
-    <p>Count: {props.count}</p>
+import React, { Component } from 'react'
+import { Grid, Image } from 'semantic-ui-react'
 
-    <p>
-      <button onClick={props.increment} disabled={props.isIncrementing}>
-        Increment
-      </button>
-      <button onClick={props.incrementAsync} disabled={props.isIncrementing}>
-        Increment Async
-      </button>
-    </p>
+// import RouteWithSubRoutes from './components/common/route-with-sub-routes'
+// import routes from './routes'
 
-    <p>
-      <button onClick={props.decrement} disabled={props.isDecrementing}>
-        Decrement
-      </button>
-      <button onClick={props.decrementAsync} disabled={props.isDecrementing}>
-        Decrement Async
-      </button>
-    </p>
+import srcLogo from '../../static/image/logo.svg'
 
-    <p>
-      <button onClick={() => props.changePage()}>
-        Go to about page via redux
-      </button>
-    </p>
-  </div>
-);
 
-const mapStateToProps = state => ({
-  count: state.counter.count,
-  isIncrementing: state.counter.isIncrementing,
-  isDecrementing: state.counter.isDecrementing
-});
+class Home extends Component {
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      increment,
-      incrementAsync,
-      decrement,
-      decrementAsync,
-      changePage: () => push('/about-us')
-    },
-    dispatch
-  );
+	render() {
+    return (
+      <div>
+        <Grid centered columns={2}>
+          <Grid.Column>
+            <Image src={srcLogo} size='small' />
+          </Grid.Column>
+        </Grid>
+        {/* {_.map(routes, (route, index) => (
+          <RouteWithSubRoutes key={index} {...route} />
+        ))} */}
+      </div>
+    )
+  }
+}
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Home);
+export default Home

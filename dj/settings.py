@@ -54,7 +54,9 @@ ROOT_URLCONF = 'dj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['ux/build'],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,17 +122,19 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    'ux/build/static/'
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'ux', 'dist')
 ]
 
 
 # Extra settings
 
 try:
-    from .local_settings import *
+    from .local_settings import *  # noqa: F401,F403
+    INSTALLED_APPS += LOCAL_APPS  # noqa: F405
+
 except ImportError:
     try:
-        from .prod_settings import *
+        from .server_settings import *  # noqa: F401,F403
     except ImportError:
         pass

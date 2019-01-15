@@ -1,0 +1,9 @@
+from django.conf.urls import url
+
+from . import views
+
+
+urlpatterns = [
+    url(r'^users/$', views.UserListCreateAPIView.as_view(), name='user-view'),
+    url(r'^(?P<slug>[-\w]+)/$', views.SimulationRetrieveUpdateDestroyAPIView.as_view(), name='user-detail')
+]
